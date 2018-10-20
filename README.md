@@ -1,6 +1,11 @@
 # Laravel-Blog
 A getting started project with Laravel.
 
+### Clone the repo
+It is very light weight repo, So recommended starting with cloning the repo
+```
+git clone https://github.com/Jatin-8898/WeatherApplication.git
+```
 ## ScreenShots
 ![capture](https://user-images.githubusercontent.com/34777376/47255646-3720a480-d492-11e8-9384-c89b6e997e8e.PNG)
 ![capture2](https://user-images.githubusercontent.com/34777376/47255651-3d168580-d492-11e8-8a17-feb7ef47de1a.PNG)
