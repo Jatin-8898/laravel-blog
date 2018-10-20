@@ -7,7 +7,7 @@ use Illuminate\Http\Request;
 class PagesController extends Controller
 {
     public function index(){
-        $title = "Welcome to LARAVEL!!";
+        $title = "Welcome to LARAVEL BLOG!!";
         /*Ways of passing param */
         //return view('pages.index', compact('title'));
         return view('pages.index')->with('title', $title);

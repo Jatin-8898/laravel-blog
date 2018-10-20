@@ -9,11 +9,13 @@
         {!!$post->body!!}       {{--  For parsing the html  --}}
     </div>
 
-    <small>Written on {{$post->created_at}}</small>
+    <small>Written on {{$post->created_at}} by {{$post->user->name}}</small>
    
     <hr>
     <a href="/posts/{{$post->id}}/edit" class="btn btn-success">Edit</a>   
     
+    {{--  FOR THE DELETE FUNCTIONALITY  --}}
+
     {!!Form::open(['action' => ['PostsController@destroy', $post->id], 'method' => 'POST', 'class' => 'float-right'])!!}
 
         {{Form::hidden('_method', 'DELETE')}}

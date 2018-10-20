@@ -12,4 +12,10 @@ class Post extends Model
     public $primaryKey = 'id';      //eg item_id
     //Timestamps
     public $timestamp = 'true';     //by default its true
+
+    /* This means a post has a relationship with the user */
+    public function user(){
+        return $this->belongsTo('App\User');
+    }
+    
 }
