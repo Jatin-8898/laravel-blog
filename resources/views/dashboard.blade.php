@@ -14,7 +14,7 @@
                         </div>
                     @endif
                     <a href="/posts/create" class="btn btn-primary">Create Post</a>
-                    <h3 class="lead mt-5">Your Blog Posts</h3>
+                    <h3 class="mt-5">Your Blog Posts</h3>
 
                     @if (count($posts) > 0)
                         <table class="table table-striped">
@@ -41,7 +41,7 @@
                             </tbody>
                         </table>
                     @else
-                        <h2>You have no posts</h2>
+                        <p>You have no posts</p>
                     @endif
                 </div>
             </div>

@@ -4,8 +4,9 @@
     
     <a href="/posts" class="btn btn-primary mb-5">Go Back</a>
     <h1>{{$post->title}}</h1>
-    
-    <div>
+    <img src="/storage/cover_images/{{$post->cover_image}}" alt="" width="100%">
+
+    <div class="mt-3">
         {!!$post->body!!}       {{--  For parsing the html  --}}
     </div>
 
