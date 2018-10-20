@@ -8,6 +8,25 @@ use DB;
 
 class PostsController extends Controller
 {
+
+    /**
+     * Create a new controller instance.
+     *
+     * @return void
+     */
+    public function __construct()
+    {
+        /* We want to display the login page if not logged in bt except these pages */
+        $this->middleware('auth' ,['except' => 
+                [
+                    'index', 
+                    'show',
+                ]
+        ]);
+    }
+
+
+
     /**
      * Display a listing of the resource.
      *
@@ -25,6 +44,9 @@ class PostsController extends Controller
         return view('posts.index')->with('posts', $posts);
     }
 
+
+
+
     /**
      * Show the form for creating a new resource.
      *
@@ -34,6 +56,9 @@ class PostsController extends Controller
     {
         return view('posts.create');
     }
+
+
+
 
     /**
      * Store a newly created resource in storage.
@@ -58,6 +83,9 @@ class PostsController extends Controller
         return redirect('/posts')->with('success', 'Post Created');
     }
 
+
+
+
     /**
      * Display the specified resource.
      *
@@ -70,6 +98,9 @@ class PostsController extends Controller
         return view('posts.show')->with('post', $post);
     }
 
+
+
+
     /**
      * Show the form for editing the specified resource.
      *
@@ -79,8 +110,16 @@ class PostsController extends Controller
     public function edit($id)
     {
         $post = Post::find($id);
+
+        /* Check for the correct user */
+        if(auth()->user()->id !== $post->user_id){
+            return redirect('/posts')->with('error', 'Unauthorized Page');
+        }
         return view('posts.edit')->with('post', $post);
     }
+
+
+
 
     /**
      * Update the specified resource in storage.
@@ -105,6 +144,9 @@ class PostsController extends Controller
         return redirect('/posts')->with('success', 'Post Updated');
     }
 
+
+
+
     /**
      * Remove the specified resource from storage.
      *
@@ -114,6 +156,12 @@ class PostsController extends Controller
     public function destroy($id)
     {
         $post = Post::find($id);
+
+         /* Check for the correct user */
+        if(auth()->user()->id !== $post->user_id){
+            return redirect('/posts')->with('error', 'Unauthorized Page');
+        }
+        
         $post->delete();
         return redirect('/posts')->with('success', 'Post Deleted');
     }

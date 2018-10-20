@@ -12,15 +12,21 @@
     <small>Written on {{$post->created_at}} by {{$post->user->name}}</small>
    
     <hr>
-    <a href="/posts/{{$post->id}}/edit" class="btn btn-success">Edit</a>   
-    
-    {{--  FOR THE DELETE FUNCTIONALITY  --}}
+    @if (!Auth::guest())    {{--  If person is guest dont show him edit del btn  --}}
 
-    {!!Form::open(['action' => ['PostsController@destroy', $post->id], 'method' => 'POST', 'class' => 'float-right'])!!}
+        @if(Auth::user()->id == $post->user_id) {{--If post is created by that person show him--}}
 
-        {{Form::hidden('_method', 'DELETE')}}
-        {{Form::submit('Delete', ['class' => 'btn btn-danger'])}}
+            {{--  EDIT BTN  --}}
+            <a href="/posts/{{$post->id}}/edit" class="btn btn-success">Edit</a>   
+            
+            {{--  FOR THE DELETE FUNCTIONALITY  --}}
+            {!!Form::open(['action' => ['PostsController@destroy', $post->id], 'method' => 'POST', 'class' => 'float-right'])!!}
 
-    {!!Form::close()!!}
+                {{Form::hidden('_method', 'DELETE')}}
+                {{Form::submit('Delete', ['class' => 'btn btn-danger'])}}
 
+            {!!Form::close()!!}
+
+        @endif    
+     @endif
 @endsection
