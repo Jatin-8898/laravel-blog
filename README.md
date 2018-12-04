@@ -4,7 +4,7 @@ A getting started project with Laravel.
 ## Clone the repo
 It is very light weight repo, So recommended starting with cloning the repo
 ```
-git clone https://github.com/Jatin-8898/Laravel-Blog.git
+git clone https://github.com/Jatin-8898/laravel-blog.git
 ```
 ## ScreenShots
 
